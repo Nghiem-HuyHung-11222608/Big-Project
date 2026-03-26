@@ -1,117 +1,118 @@
 <?php
-if (isset($_SESSION['laclac_khachang'])==false) {
-	header('location:?view=login'); 
-}else{
+if (isset($_SESSION['laclac_khachang']) == false) {
+    header('location:?view=login');
+} else {
     $kh = $_SESSION['laclac_khachang'];
-    
 }
 ?>
 <div class="breadcrumbs">
     <div class="container">
         <div class="row">
             <div class="col">
-                <p class="bread"><span><a href="?view">Trang Chủ</a></span> / <span>THANH TOÁN</span></p>
+                <p class="bread"><span><a href="?view">Trang Chu</a></span> / <span>Thanh Toan</span></p>
             </div>
         </div>
     </div>
 </div>
-<div class="colorlib-product">
+
+<div class="nhh-checkout">
     <div class="container">
-        <div class="row row-pb-lg">
-            <div class="col-md-10 offset-md-1">
-                <div class="process-wrap">
-                    <div class="process text-center active ">
-                        <p><span>01</span></p>
-                        <h3>Giỏ hàng</h3>
+
+        <!-- Progress Steps -->
+        <div class="nhh-progress-steps">
+            <div class="nhh-step active">
+                <div class="nhh-step-num">01</div>
+                <span class="nhh-step-label">Gio Hang</span>
+            </div>
+            <div class="nhh-step active">
+                <div class="nhh-step-num">02</div>
+                <span class="nhh-step-label">Thanh Toan</span>
+            </div>
+            <div class="nhh-step">
+                <div class="nhh-step-num">03</div>
+                <span class="nhh-step-label">Hoan Thanh</span>
+            </div>
+        </div>
+
+        <div class="row">
+            <!-- Billing Form -->
+            <div class="col-lg-7">
+                <h2 class="nhh-checkout-form-title">Chi Tiet Thanh Toan</h2>
+                <form action="?view=order" method="post" id="form_order">
+                    <div class="row">
+                        <div class="col-12">
+                            <div class="nhh-form-group">
+                                <label for="fname">Ho va Ten</label>
+                                <input type="text" id="fname" name="fname" class="nhh-form-control" placeholder="Ho va Ten" required value="<?php echo $kh['TenKH']; ?>">
+                            </div>
+                        </div>
+                        <div class="col-12">
+                            <div class="nhh-form-group">
+                                <label for="address">Dia Chi Giao Hang</label>
+                                <input type="text" id="address" name="address" class="nhh-form-control" placeholder="So nha, duong, quan/huyen, tinh/thanh pho" required value="<?php echo $kh['DiaChi']; ?>">
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="nhh-form-group">
+                                <label for="email">Email</label>
+                                <input type="email" id="email" name="email" class="nhh-form-control" placeholder="email@example.com" required value="<?php echo $kh['Email']; ?>">
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="nhh-form-group">
+                                <label for="zippostalcode">So Dien Thoai</label>
+                                <input type="text" id="zippostalcode" name="phone" class="nhh-form-control" placeholder="0xxx xxx xxx" required value="<?php echo $kh['SDT']; ?>">
+                            </div>
+                        </div>
+                        <input type="hidden" name="tongtien" value="<?php echo $_POST['tongtien']; ?>">
                     </div>
-                    <div class="process text-center active">
-                        <p><span>02</span></p>
-                        <h3>Thanh toán</h3>
+                </form>
+            </div>
+
+            <!-- Order Summary -->
+            <div class="col-lg-5">
+                <div class="nhh-checkout-summary">
+                    <h2>Don Hang Cua Ban</h2>
+                    <ul>
+                        <li>
+                            <span><?php echo $_POST['sl']; ?> san pham</span>
+                            <span><?php echo $_POST['tamtinh']; ?>d</span>
+                        </li>
+                        <li>
+                            <span>Ma giam gia</span>
+                            <span><?php echo number_format($_POST['tiensale']); ?>d</span>
+                        </li>
+                        <li>
+                            <span>Van chuyen</span>
+                            <span style="color:#86efac;">Mien phi</span>
+                        </li>
+                        <li class="nhh-order-total">
+                            <span>Tong Cong</span>
+                            <span style="font-size:20px;color:#93C5FD;"><?php echo number_format($_POST['tongtien']); ?>d</span>
+                        </li>
+                    </ul>
+
+                    <!-- Payment Method -->
+                    <h2 style="font-size:16px;margin-top:24px;padding-bottom:12px;border-bottom:1px solid rgba(255,255,255,0.15);">Phuong Thuc Thanh Toan</h2>
+                    <div class="nhh-payment-option">
+                        <label>
+                            <input type="radio" name="optradio" checked> Thanh toan khi nhan hang (COD)
+                        </label>
                     </div>
-                    <div class="process text-center">
-                        <p><span>03</span></p>
-                        <h3>Đặt hàng thành công</h3>
+                    <div class="nhh-payment-option" style="opacity:0.5;">
+                        <label>
+                            <input type="radio" name="optradio" disabled> Thanh toan online (coming soon)
+                        </label>
+                    </div>
+
+                    <div style="margin-top:24px;">
+                        <button class="nhh-btn nhh-btn-primary nhh-btn-full" type="submit" name="order" form="form_order">
+                            <i class="fas fa-lock"></i> Dat Hang Ngay
+                        </button>
                     </div>
                 </div>
             </div>
         </div>
-        <div class="row">
-					<div class="col-lg-8">
-						<form action="?view=order" method="post" class="colorlib-form" id="form_order">
-							<h2>Chi tiết thanh toán</h2>
-		              	    <div class="row">
-								<div class="col-md-12">
-									<div class="form-group">
-										<label for="fname">Họ và Tên</label>
-										<input type="text" id="fname" name="fname" class="form-control"  placeholder=" &nbsp; Họ và Tên" required  value="<?php echo $kh['TenKH']?>">
-									</div>
-								</div>
-                                <div class="col-md-12">
-                                    <div class="form-group">
-                                        <label for="fname">Địa Chỉ</label>
-                                        <input type="text" id="address" name="address" class="form-control" placeholder=" &nbsp; Địa Chỉ" required value="<?php echo $kh['DiaChi']?>">
-                                    </div>
-                                </div>
-								<div class="col-md-6">
-									<div class="form-group">
-										<label for="email">E-mail </label>
-										<input type="text" id="email" name="email" class="form-control" placeholder=" &nbsp; Sô điện thoại" required value="<?php echo $kh['Email']?>">
-									</div>
-								</div>
-								<div class="col-md-6">
-									<div class="form-group">
-										<label for="Phone">Số điện thoại</label>
-										<input type="text" id="zippostalcode" name="phone" class="form-control" placeholder=" &nbsp; Sô điện thoại" required value="<?php echo $kh['SDT']?>">
-									</div>
-								</div>
-                                <input type="hidden" name="tongtien" value="<?php echo $_POST['tongtien'] ;?>">
-		               </div>
-		            </form>
-					</div>
 
-					<div class="col-lg-4">
-						<div class="row">
-							<div class="col-md-12">
-								<div class="cart-detail">
-									<h2>Giỏ hàng</h2>
-									<ul>
-										<li>
-											<span><?php echo $_POST['sl'].'  sản phẩm'; ?> </span> <span><?php echo $_POST['tamtinh'].' đ'; ?> </span>
-										</li>
-										<li><span>Mã giảm giá</span> <span><?php echo number_format($_POST['tiensale']).' đ'; ?></span></li>
-										<li ><span class="orderTotal">Tổng cộng</span> <span class="orderTotal"><?php echo number_format($_POST['tongtien']).' đ'; ?></span></li>
-									</ul>
-								</div>
-						   </div>
-
-						   <div class="w-100"></div>
-
-						   <div class="col-md-12">
-								<div class="cart-detail">
-									<h2>Phương thức thanh toán</h2>
-									<div class="form-group">
-										<div class="col-md-12">
-											<div class="radio">
-											   <label><input type="radio" name="optradio" checked> Thanh toán  khi nhận hàng</label>
-											</div>
-										</div>
-									</div>
-									<div class="form-group">
-										<div class="col-md-12">
-											<div class="radio">
-											   <label><input type="radio" name="optradio" disabled> Thanh toán online (coming soom)</label>
-											</div>
-										</div>
-									</div>			
-								</div>
-							</div>
-						</div>
-						<div class="row">
-							<div class="col-md-12 text-center">
-								<p><button class="btn btn-primary" type="submit" name="order" form="form_order">Thanh Toán</button></p>
-							</div>
-						</div>
-					</div>
-				</div>
     </div>
 </div>

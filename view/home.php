@@ -1,226 +1,239 @@
+<!-- ================================================
+     HERO SLIDER
+     ================================================ -->
 <aside id="colorlib-hero">
     <div class="flexslider">
         <ul class="slides">
+
             <li style="background-image: url('webroot/image/slider/banner9.jpg');">
-                <div class="overlay"></div>
+                <div class="nhh-hero-overlay"></div>
+                <div class="nhh-hero-content">
+                    <p class="nhh-hero-eyebrow">Bo Suu Tap Moi 2024</p>
+                    <h1 class="nhh-hero-title">Style La<br>Ngon Ngu Cua Ban</h1>
+                    <p class="nhh-hero-desc">Kham pha xu huong thoi trang tre trung, hien dai nhat</p>
+                    <div class="nhh-hero-actions">
+                        <a href="?view=products" class="nhh-btn nhh-btn-white">Kham Pha Ngay &rarr;</a>
+                        <a href="?view=products-category&id=1" class="nhh-btn nhh-btn-outline-light">Xem Bo Suu Tap</a>
+                    </div>
+                </div>
             </li>
+
             <li style="background-image: url('webroot/image/slider/banner7.jpg');">
-                <div class="overlay"></div>
+                <div class="nhh-hero-overlay"></div>
+                <div class="nhh-hero-content">
+                    <p class="nhh-hero-eyebrow">Collection Ao — Tops</p>
+                    <h1 class="nhh-hero-title">Phong Cach<br>Khong Gioi Han</h1>
+                    <p class="nhh-hero-desc">Hang tram mau ao da dang cho moi phong cach</p>
+                    <div class="nhh-hero-actions">
+                        <a href="?view=products-category&id=1" class="nhh-btn nhh-btn-white">Mua Ngay &rarr;</a>
+                    </div>
+                </div>
             </li>
+
             <li style="background-image: url('webroot/image/slider/banner8.jpg');">
-                <div class="overlay"></div>
+                <div class="nhh-hero-overlay"></div>
+                <div class="nhh-hero-content">
+                    <p class="nhh-hero-eyebrow">Collection Quan — Bottoms</p>
+                    <h1 class="nhh-hero-title">Dinh Cao<br>Cua Thanh Lich</h1>
+                    <p class="nhh-hero-desc">Lua chon hoan hao cho moi buoi kien</p>
+                    <div class="nhh-hero-actions">
+                        <a href="?view=products-category&id=2" class="nhh-btn nhh-btn-white">Kham Pha Quan &rarr;</a>
+                    </div>
+                </div>
             </li>
+
             <li style="background-image: url('webroot/image/slider/banner6.jpg');">
-                <div class="overlay"></div>
+                <div class="nhh-hero-overlay"></div>
+                <div class="nhh-hero-content">
+                    <p class="nhh-hero-eyebrow">Phu Kien & Giay Dep</p>
+                    <h1 class="nhh-hero-title">Hoan Thien<br>Phong Cach</h1>
+                    <p class="nhh-hero-desc">Phu kien dinh cao, giay dep chinh hang</p>
+                    <div class="nhh-hero-actions">
+                        <a href="?view=products" class="nhh-btn nhh-btn-white">Tat Ca San Pham &rarr;</a>
+                    </div>
+                </div>
             </li>
+
         </ul>
     </div>
 </aside>
 
-
-
-<div class="colorlib-product">
+<!-- ================================================
+     FEATURED PRODUCTS
+     ================================================ -->
+<section class="nhh-section">
     <div class="container">
-        <div class="row">
-            <div class="col-sm-8 offset-sm-2 text-center ">
-                <h2>SẢN PHẨM NỔI BẬT</h2>
-            </div>
+        <div class="nhh-section-heading">
+            <h2>San Pham Noi Bat</h2>
+            <p>Nhung san pham duoc yeu thich nhat tai NHH</p>
         </div>
-        <?php
-        $product = featuredProductsL4();
-        ?>
-
-
-        <div class="container ">
-            <div class="row wrapper-dt">
-                <div class="col-12">
-                    <div class="row pad-dt">
-                        <div class="row pad-dt"><?php while ($row = mysqli_fetch_array($product)) { ?>
-                                <div class="col-3 col-dt">
-                                    <a href="?view=product-detail&id=<?php echo $row['MaSP'] ?>">
-                                        <div class="item">
-                                            <div class="product-lable">
-                                                <?php $price_sale = price_sale($row['MaSP'], $row['DonGia']);
-                                                if ($price_sale < $row['DonGia']) {
-                                                    echo '<span>Giảm ' . number_format($row['DonGia'] - $price_sale) . 'đ </span>';
-                                                } ?>
-                                            </div>
-                                            <div><img src="webroot/image/sanpham/<?php echo $row['AnhNen']; ?>"></div>
-                                            <div class="item-name">
-                                                <p> <?php echo $row['TenSP']; ?> </p>
-                                            </div>
-                                            <div class="item-price">
-                                                <p> <?php echo number_format($price_sale, 0) . 'đ'; ?> </p>
-                                                <h6> <?php if (number_format($row['DonGia']) !== number_format($price_sale)) {
-                                                    echo number_format($row['DonGia']) . 'đ';
-                                                }
-                                                ; ?>
-                                                </h6>
-                                            </div>
-                                        </div>
-                                    </a>
-                                </div><?php } ?>
-                            <div id="data_sp"></div>
+        <?php $product = featuredProductsL4(); ?>
+        <div class="nhh-products-grid">
+            <?php while ($row = mysqli_fetch_array($product)) {
+                $price_sale = price_sale($row['MaSP'], $row['DonGia']);
+            ?>
+            <div class="nhh-product-card">
+                <a href="?view=product-detail&id=<?php echo $row['MaSP']; ?>">
+                    <div class="nhh-product-img-wrap">
+                        <?php if ($price_sale < $row['DonGia']): ?>
+                        <span class="nhh-sale-badge">Giam <?php echo number_format($row['DonGia'] - $price_sale); ?>d</span>
+                        <?php endif; ?>
+                        <img src="webroot/image/sanpham/<?php echo $row['AnhNen']; ?>" alt="<?php echo $row['TenSP']; ?>" loading="lazy">
+                    </div>
+                    <div class="nhh-product-info">
+                        <p class="nhh-product-name"><?php echo $row['TenSP']; ?></p>
+                        <div class="nhh-product-prices">
+                            <span class="nhh-price-current"><?php echo number_format($price_sale, 0); ?>d</span>
+                            <?php if (number_format($row['DonGia']) !== number_format($price_sale)): ?>
+                            <span class="nhh-price-old"><?php echo number_format($row['DonGia']); ?>d</span>
+                            <?php endif; ?>
                         </div>
                     </div>
-                </div>
-                <div id="loading" style="display:none">
-                    <img src="webroot/image/loader.gif" alt="Loading..." />
-                </div>
+                </a>
             </div>
+            <?php } ?>
         </div>
-
+        <div id="data_sp"></div>
     </div>
-</div>
-<div class="flexslider">
-    <img src="webroot/image/slider/brand-2.jpg" alt="" width="100%" height="50%">
+</section>
+
+<!-- ================================================
+     BRAND BANNER
+     ================================================ -->
+<div style="overflow:hidden;">
+    <img src="webroot/image/slider/brand-2.jpg" alt="NHH Banner" style="width:100%;height:auto;display:block;max-height:320px;object-fit:cover;">
 </div>
 
-<div class="colorlib-product">
+<!-- ================================================
+     NEW PRODUCTS
+     ================================================ -->
+<section class="nhh-section nhh-section-alt">
     <div class="container">
-        <div class="row">
-            <div class="col-sm-8 offset-sm-2 text-center ">
-                <h2>SẢN PHẨM MỚI</h2>
-            </div>
+        <div class="nhh-section-heading">
+            <h2>San Pham Moi</h2>
+            <p>Cap nhat nhung san pham moi nhat vua ve hang</p>
         </div>
-        <?php
-        $product = newsProductsL4();
-        ?>
-
-
-        <div class="container ">
-            <div class="row wrapper-dt">
-                <div class="col-12">
-                    <div class="row pad-dt">
-                        <div class="row pad-dt"><?php while ($row = mysqli_fetch_array($product)) { ?>
-                                <div class="col-3 col-dt">
-                                    <a href="?view=product-detail&id=<?php echo $row['MaSP'] ?>">
-                                        <div class="item">
-                                            <div class="product-lable">
-                                                <?php $price_sale = price_sale($row['MaSP'], $row['DonGia']);
-                                                if ($price_sale < $row['DonGia']) {
-                                                    echo '<span>Giảm ' . number_format($row['DonGia'] - $price_sale) . 'đ </span>';
-                                                } ?>
-                                            </div>
-                                            <div><img src="webroot/image/sanpham/<?php echo $row['AnhNen']; ?>"></div>
-                                            <div class="item-name">
-                                                <p> <?php echo $row['TenSP']; ?> </p>
-                                            </div>
-                                            <div class="item-price">
-                                                <p> <?php echo number_format($price_sale, 0) . 'đ'; ?> </p>
-                                                <h6> <?php if (number_format($row['DonGia']) !== number_format($price_sale)) {
-                                                    echo number_format($row['DonGia']) . 'đ';
-                                                }
-                                                ; ?>
-                                                </h6>
-                                            </div>
-                                        </div>
-                                    </a>
-                                </div><?php } ?>
-                            <div id="data_sp"></div>
+        <?php $product = newsProductsL4(); ?>
+        <div class="nhh-products-grid">
+            <?php while ($row = mysqli_fetch_array($product)) {
+                $price_sale = price_sale($row['MaSP'], $row['DonGia']);
+            ?>
+            <div class="nhh-product-card">
+                <a href="?view=product-detail&id=<?php echo $row['MaSP']; ?>">
+                    <div class="nhh-product-img-wrap">
+                        <?php if ($price_sale < $row['DonGia']): ?>
+                        <span class="nhh-sale-badge">Giam <?php echo number_format($row['DonGia'] - $price_sale); ?>d</span>
+                        <?php endif; ?>
+                        <img src="webroot/image/sanpham/<?php echo $row['AnhNen']; ?>" alt="<?php echo $row['TenSP']; ?>" loading="lazy">
+                    </div>
+                    <div class="nhh-product-info">
+                        <p class="nhh-product-name"><?php echo $row['TenSP']; ?></p>
+                        <div class="nhh-product-prices">
+                            <span class="nhh-price-current"><?php echo number_format($price_sale, 0); ?>d</span>
+                            <?php if (number_format($row['DonGia']) !== number_format($price_sale)): ?>
+                            <span class="nhh-price-old"><?php echo number_format($row['DonGia']); ?>d</span>
+                            <?php endif; ?>
                         </div>
                     </div>
-                </div>
-                <div id="loading" style="display:none">
-                    <img src="webroot/image/loader.gif" alt="Loading..." />
-                </div>
+                </a>
             </div>
-        </div>
-
-    </div>
-</div>
-<div class="flexslider">
-    <h2 class="text-center">SPONSORSHIP</h2>
-    <p class="text-center">Ngắm nhìn những bức ảnh từ khách hàng của chúng tôi</p>
-    <div class="row justify-content-center">
-        <div class="col-6 col-sm-4 col-md-2 p-2">
-            <img src="webroot/image/brand/spon1.jpeg" class="img-fluid" alt="Sponsor 1">
-        </div>
-        <div class="col-6 col-sm-4 col-md-2 p-2">
-            <img src="webroot/image/brand/spon2.jpeg" class="img-fluid" alt="Sponsor 2">
-        </div>
-        <div class="col-6 col-sm-4 col-md-2 p-2">
-            <img src="webroot/image/brand/spon3.jpeg" class="img-fluid" alt="Sponsor 3">
-        </div>
-        <div class="col-6 col-sm-4 col-md-2 p-2">
-            <img src="webroot/image/brand/spon4.jpeg" class="img-fluid" alt="Sponsor 4">
-        </div>
-        <div class="col-6 col-sm-4 col-md-2 p-2">
-            <img src="webroot/image/brand/spon5.jpeg" class="img-fluid" alt="Sponsor 5">
+            <?php } ?>
         </div>
     </div>
-</div>
+</section>
 
-</div>
-<div class="colorlib-product">
+<!-- ================================================
+     SPONSORSHIP
+     ================================================ -->
+<section class="nhh-sponsors">
     <div class="container">
-        <div class="row">
-            <div class="col-sm-8 offset-sm-2 text-center ">
-                <h2>SẢN PHẨM BÁN CHẠY</h2>
-            </div>
+        <h2 class="nhh-sponsors-title">Sponsorship</h2>
+        <p class="nhh-sponsors-desc">Ngam nhin nhung buc anh tu khach hang cua chung toi</p>
+        <div class="nhh-sponsor-grid">
+            <div class="nhh-sponsor-item"><img src="webroot/image/brand/spon1.jpeg" alt="Sponsor 1"></div>
+            <div class="nhh-sponsor-item"><img src="webroot/image/brand/spon2.jpeg" alt="Sponsor 2"></div>
+            <div class="nhh-sponsor-item"><img src="webroot/image/brand/spon3.jpeg" alt="Sponsor 3"></div>
+            <div class="nhh-sponsor-item"><img src="webroot/image/brand/spon4.jpeg" alt="Sponsor 4"></div>
+            <div class="nhh-sponsor-item"><img src="webroot/image/brand/spon5.jpeg" alt="Sponsor 5"></div>
         </div>
-        <?php
-        $product = sellingProductsL4();
-        ?>
+    </div>
+</section>
 
-
-        <div class="container ">
-            <div class="row wrapper-dt">
-                <div class="col-12">
-                    <div class="row pad-dt">
-                        <div class="row pad-dt"><?php while ($row = mysqli_fetch_array($product)) { ?>
-                                <div class="col-3 col-dt">
-                                    <a href="?view=product-detail&id=<?php echo $row['MaSP'] ?>">
-                                        <div class="item">
-                                            <div class="product-lable">
-                                                <?php $price_sale = price_sale($row['MaSP'], $row['DonGia']);
-                                                if ($price_sale < $row['DonGia']) {
-                                                    echo '<span>Giảm ' . number_format($row['DonGia'] - $price_sale) . 'đ </span>';
-                                                } ?>
-                                            </div>
-                                            <div><img src="webroot/image/sanpham/<?php echo $row['AnhNen']; ?>"></div>
-                                            <div class="item-name">
-                                                <p> <?php echo $row['TenSP']; ?> </p>
-                                            </div>
-                                            <div class="item-price">
-                                                <p> <?php echo number_format($price_sale, 0) . 'đ'; ?> </p>
-                                                <h6> <?php if (number_format($row['DonGia']) !== number_format($price_sale)) {
-                                                    echo number_format($row['DonGia']) . 'đ';
-                                                }
-                                                ; ?>
-                                                </h6>
-                                            </div>
-                                        </div>
-                                    </a>
-                                </div><?php } ?>
-                            <div id="data_sp"></div>
+<!-- ================================================
+     BEST SELLING PRODUCTS
+     ================================================ -->
+<section class="nhh-section">
+    <div class="container">
+        <div class="nhh-section-heading">
+            <h2>San Pham Ban Chay</h2>
+            <p>Nhung san pham duoc mua nhieu nhat tai NHH</p>
+        </div>
+        <?php $product = sellingProductsL4(); ?>
+        <div class="nhh-products-grid">
+            <?php while ($row = mysqli_fetch_array($product)) {
+                $price_sale = price_sale($row['MaSP'], $row['DonGia']);
+            ?>
+            <div class="nhh-product-card">
+                <a href="?view=product-detail&id=<?php echo $row['MaSP']; ?>">
+                    <div class="nhh-product-img-wrap">
+                        <?php if ($price_sale < $row['DonGia']): ?>
+                        <span class="nhh-sale-badge">Giam <?php echo number_format($row['DonGia'] - $price_sale); ?>d</span>
+                        <?php endif; ?>
+                        <img src="webroot/image/sanpham/<?php echo $row['AnhNen']; ?>" alt="<?php echo $row['TenSP']; ?>" loading="lazy">
+                    </div>
+                    <div class="nhh-product-info">
+                        <p class="nhh-product-name"><?php echo $row['TenSP']; ?></p>
+                        <div class="nhh-product-prices">
+                            <span class="nhh-price-current"><?php echo number_format($price_sale, 0); ?>d</span>
+                            <?php if (number_format($row['DonGia']) !== number_format($price_sale)): ?>
+                            <span class="nhh-price-old"><?php echo number_format($row['DonGia']); ?>d</span>
+                            <?php endif; ?>
                         </div>
                     </div>
+                </a>
+            </div>
+            <?php } ?>
+        </div>
+        <div id="loading" style="display:none">
+            <img src="webroot/image/loader.gif" alt="Loading...">
+        </div>
+        <div style="text-align:center;padding:24px 0 8px;">
+            <a href="?view=products" class="nhh-btn nhh-btn-primary">Xem Tat Ca San Pham &rarr;</a>
+        </div>
+    </div>
+</section>
+
+<!-- ================================================
+     TIN TUC (NEWS)
+     ================================================ -->
+<section class="nhh-section nhh-section-alt">
+    <div class="container">
+        <div class="nhh-section-heading">
+            <h2>Tin Tuc & Xu Huong</h2>
+            <p>Cap nhat nhung tin tuc moi nhat ve xu huong thoi trang</p>
+        </div>
+        <div class="nhh-news-grid">
+            <div class="nhh-news-card">
+                <img src="webroot/image/brand/tt1.jpeg" alt="Form dang tham khao">
+                <div class="nhh-news-card-body">
+                    <p class="nhh-news-card-tag">Style Guide</p>
+                    <p>Form Dang Tham Khao Tai NHH</p>
                 </div>
-                <div id="loading" style="display:none">
-                    <img src="webroot/image/loader.gif" alt="Loading..." />
+            </div>
+            <div class="nhh-news-card">
+                <img src="webroot/image/brand/tt2.jpeg" alt="Bao hanh ao da">
+                <div class="nhh-news-card-body">
+                    <p class="nhh-news-card-tag">Tin Tuc</p>
+                    <p>Chinh Sach Bao Hanh Ao Da Tai NHH</p>
+                </div>
+            </div>
+            <div class="nhh-news-card">
+                <img src="webroot/image/brand/tt3.jpeg" alt="Giat bao quan">
+                <div class="nhh-news-card-body">
+                    <p class="nhh-news-card-tag">Huong Dan</p>
+                    <p>Huong Dan Cach Giat Bao Quan San Pham NHH</p>
                 </div>
             </div>
         </div>
-
     </div>
-</div>
-
-    <div class="flexslider">
-        <h2 class="text-center">TIN TỨC</h2>
-        <p class="text-center">Cập nhật những tin tức mới nhất về xu hướng thời trang</p>
-        <div class="row justify-content-center">
-            <div class="col-4 col-md-2 mt-5 mb-5">
-                <img src="webroot/image/brand/tt1.jpeg" class="img-fluid" alt="Sponsor 1">
-                <p class="fw-bold">FORM DÁNG THAM KHẢO TẠI NHH</p>
-            </div>
-            <div class="col-8 col-md-4 ">
-                <img src="webroot/image/brand/tt2.jpeg" class="img-fluid" alt="Sponsor 2">
-                <p class="fw-bold">CHÍNH SÁCH BẢO HÀNH ÁO DA TẠI NHH</p>
-            </div>
-            <div class="col-4 col-md-2 mt-5 mb-5">
-                <img src="webroot/image/brand/tt3.jpeg" class="img-fluid" alt="Sponsor 3">
-                <p class="fw-bold">HƯỚNG DẪN CÁCH GIẶT BẢO QUẢN SẢN PHẨM NHH</p>
-            </div>
-        </div>
-    </div>
+</section>

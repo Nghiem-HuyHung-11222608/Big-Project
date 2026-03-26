@@ -2,58 +2,56 @@
     <div class="container">
         <div class="row">
             <div class="col">
-                <p class="bread"><span><a href="?view">Trang Chủ</a></span> / <span>Tất cả sản phẩm</span></p>
+                <p class="bread"><span><a href="?view">Trang Chu</a></span> / <span>Tat Ca San Pham</span></p>
             </div>
         </div>
     </div>
 </div>
 
-<?php
- $product=productAll();
-?> 
+<div class="container" style="padding-top:0;">
+    <div class="nhh-collection-header">
+        <h1>Tat Ca San Pham</h1>
+        <p>Kham pha toan bo bo suu tap thoi trang cua NHH</p>
+    </div>
 
+    <?php $product = productAll(); ?>
 
-<div class="container ">
-  <div class="row wrapper-dt">
-      <div class="col-12">
-        <div class="row pad-dt">
-          <div class="row pad-dt"><?php while( $row=mysqli_fetch_array($product)){ ?>
-            <div class="col-3 col-dt">
-              <a href="?view=product-detail&id=<?php echo $row['MaSP'] ?>">
-                <div class="item">
-                  <div class="product-lable">
-                    <?php $price_sale=price_sale($row['MaSP'],$row['DonGia']); if($price_sale < $row['DonGia']) { 
-                      echo '<span>Giảm '.number_format( $row['DonGia'] - $price_sale).'đ </span>';}?>
-                  </div>
-                  <div><img src="webroot/image/sanpham/<?php echo $row['AnhNen']; ?>"></div>
-                  <div class="item-name"><p> <?php echo $row['TenSP']; ?> </p></div>
-                  <div class="item-price">
-                    <p> <?php echo number_format($price_sale,0).'đ'; ?> </p>
-                    <h6> <?php if(number_format($row['DonGia']) !== number_format($price_sale)) {echo number_format($row['DonGia']).'đ';} ;  ?> </h6> 
-                  </div>
+    <div class="nhh-products-grid">
+        <?php while ($row = mysqli_fetch_array($product)) {
+            $price_sale = price_sale($row['MaSP'], $row['DonGia']);
+        ?>
+        <div class="nhh-product-card">
+            <a href="?view=product-detail&id=<?php echo $row['MaSP']; ?>">
+                <div class="nhh-product-img-wrap">
+                    <?php if ($price_sale < $row['DonGia']): ?>
+                    <span class="nhh-sale-badge">Giam <?php echo number_format($row['DonGia'] - $price_sale); ?>d</span>
+                    <?php endif; ?>
+                    <img src="webroot/image/sanpham/<?php echo $row['AnhNen']; ?>" alt="<?php echo $row['TenSP']; ?>" loading="lazy">
                 </div>
-              </a>
-            </div><?php }  ?>
-             <div id="data_sp" ></div>
-          </div>
+                <div class="nhh-product-info">
+                    <p class="nhh-product-name"><?php echo $row['TenSP']; ?></p>
+                    <div class="nhh-product-prices">
+                        <span class="nhh-price-current"><?php echo number_format($price_sale, 0); ?>d</span>
+                        <?php if (number_format($row['DonGia']) !== number_format($price_sale)): ?>
+                        <span class="nhh-price-old"><?php echo number_format($row['DonGia']); ?>d</span>
+                        <?php endif; ?>
+                    </div>
+                </div>
+            </a>
         </div>
-      </div>
-      <div id="loading" style="display:none">
-        <img src="webroot/image/loader.gif" alt="Loading..."/>
-      </div>
-     
-      <form id="load_sp" class="row">
-          <input type="text" name="page" id="page" value="1" hidden="true">
-          <input type="text" name="rowCount" id="rowCount" value="10" hidden="true">
-          <button type="button" id="xemthem" class="btn btn-outline-secondary xemthem mx-auto col-2">xem thêm</button>
-      </form>
-  </div>
+        <?php } ?>
+        <div id="data_sp"></div>
+    </div>
+
+    <div id="loading" style="display:none">
+        <img src="webroot/image/loader.gif" alt="Loading...">
+    </div>
+
+    <form id="load_sp" class="row">
+        <input type="text" name="page" id="page" value="1" hidden>
+        <input type="text" name="rowCount" id="rowCount" value="10" hidden>
+        <div class="nhh-load-more-wrap">
+            <button type="button" id="xemthem" class="nhh-btn nhh-btn-primary xemthem">Xem Them San Pham</button>
+        </div>
+    </form>
 </div>
-
-
-
-            
-                
-                
-                
-               

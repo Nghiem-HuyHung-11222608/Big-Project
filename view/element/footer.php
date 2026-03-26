@@ -1,93 +1,77 @@
-<footer id="colorlib-footer" role="contentinfo">
+<footer id="colorlib-footer">
     <div class="container">
-        <div class="row row-pb-md">
-            <div class="col-5 footer-col colorlib-widget ">
-                <h2 class="text-white fs-2">NHH</h2>
-                <p class="text-white fs-6 ">NHH chuyên cung cấp các mặt hàng thời trang cao cấp</p>
-                <p class="text-white fs-6 text mb-0"><i class="fa-solid fa-location-dot"></i>
-                    Địa chỉ: Chung cư Chợ Mơ,459 Bạch Mai,Hai Bà Trưng,Hà Nội.</p>
-                <p class="text-white fs-6 text mb-0"><i class="fa-solid fa-phone"></i>
-                    Hotline: (+84) 837 406 888</p>
-                <p class="text-white fs-6 text mb-0"><i class="fa-solid fa-envelope"></i>
-                    Email: Vodanhfx29102004@gmail.com</p>
+        <div class="nhh-footer-grid">
 
-            </div>
-            <div class="col-3 footer-col colorlib-widget">
-                <h4 class="text-white fs-5 d-inline-block">Sản phẩm</h4>
-                <hr class="border border-white border-2 d-inline-block" style="width: 150px; margin: 0;">
-                <p>
-                <ul class="colorlib-footer-links">
-                    <li><a href="#" class="text-white fs-7">Áo (Tops)</a></li>
-                    <li><a href="#" class="text-white fs-7">Quần (Bottoms)</a></li>
-                    <li><a href="#" class="text-white fs-7">Giày (Shoes)</a></li>
-                    <li><a href="#" class="text-white fs-7">Phụ kiện (Acc)</a></li>
-                </ul>
+            <!-- Brand Info -->
+            <div>
+                <span class="nhh-footer-brand">N<span>HH</span></span>
+                <p class="nhh-footer-desc">
+                    NHH chuyen cung cap cac mat hang thoi trang cao cap, phong cach tre trung va hien dai.
+                    Chung toi mang den nhung san pham chat luong nhat cho ban.
                 </p>
+                <div class="nhh-footer-contact-item">
+                    <i class="fas fa-location-dot"></i>
+                    <span>Chung cu Cho Mo, 459 Bach Mai, Hai Ba Trung, Ha Noi.</span>
+                </div>
+                <div class="nhh-footer-contact-item">
+                    <i class="fas fa-phone"></i>
+                    <span>Hotline: (+84) 837 406 888</span>
+                </div>
+                <div class="nhh-footer-contact-item">
+                    <i class="fas fa-envelope"></i>
+                    <span>Email: Vodanhfx29102004@gmail.com</span>
+                </div>
             </div>
 
-            <div class="col-3 footer-col colorlib-widget">
-                <h4 class="text-white fs-5">Chính Sách</h4>
-                <hr class="border border-white border-2" style="width: 200px; margin: 0; ">
-                <p>
-                <ul class="colorlib-footer-links">
-                    <li><a href="#" class="text-white fs-7">Hướng dẫn mua hàng</a></li>
-                    <li><a href="#" class="text-white fs-7">Chính sách vận chuyển</a></li>
-                    <li><a href="#" class="text-white fs-7">Chính sách đổi trả</a></li>
-                    <li><a href="#" class="text-white fs-7">Chính sách thanh toán</a></li>
-
+            <!-- Products -->
+            <div>
+                <h4 class="nhh-footer-heading">San Pham</h4>
+                <ul class="nhh-footer-links">
+                    <li><a href="?view=products-category&id=1">Ao (Tops)</a></li>
+                    <li><a href="?view=products-category&id=2">Quan (Bottoms)</a></li>
+                    <li><a href="?view=products-category&id=3">Giay (Shoes)</a></li>
+                    <li><a href="?view=products-category&id=4">Phu kien (Acc)</a></li>
+                    <li><a href="?view=products">Tat ca san pham</a></li>
                 </ul>
-                </p>
             </div>
 
-            <!-- <div class="col-2 footer-col colorlib-widget">
-                <h4 class="text-white fs-5">Liên hệ</h4>
-                <p>
-                <ul class="colorlib-footer-links ">
-                    <li class="fs-7"><i class="fa-brands fa-facebook text-white"></i> <a href="#" class="text-white">Facebook</a></li>
-                    <li class="fs-7"><i class="fa-brands fa-tiktok text-white"></i> <a href="#" class="text-white">Tik tok</a></li>
-                    <li class="fs-7"><i class="fa-brands fa-instagram text-white"></i> <a href="#" class="text-white">Intagram</a></li>
-                    <li class="fs-7"><i class="fa-solid fa-shop text-white"></i> <a href="#" class="text-white">Shope</a></li>
+            <!-- Policies -->
+            <div>
+                <h4 class="nhh-footer-heading">Chinh Sach</h4>
+                <ul class="nhh-footer-links">
+                    <li><a href="#">Huong dan mua hang</a></li>
+                    <li><a href="#">Chinh sach van chuyen</a></li>
+                    <li><a href="#">Chinh sach doi tra</a></li>
+                    <li><a href="#">Chinh sach thanh toan</a></li>
+                    <li><a href="?view=contact">Lien he</a></li>
                 </ul>
-                </p>
-            </div> -->
-            
+            </div>
+
         </div>
     </div>
-    <hr class="border border-white border-2 ">
-    <div class="copy">
-        <div class="row">
-            <div class="col-sm-12 text-center">
-                <p>
-                    <span class="text-white">
-                        <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-                        Copyright &copy;
-                        <script>
-                            document.write(new Date().getFullYear());
-                        </script> All rights reserved | Design by Hưng
-                    </span>
-                </p>
-            </div>
-        </div>
+
+    <div class="nhh-footer-bottom">
+        <p>
+            &copy; <script>document.write(new Date().getFullYear());</script>
+            NHH Fashion &mdash; Designed with <span style="color:var(--blue)">&#9829;</span> by Hung
+        </p>
     </div>
 </footer>
-</div>
-<div class="gototop js-top">
-    <a href="#" class="js-gotop"><i class="fa-solid fa-up-long"></i></a>
-</div>
+</div><!-- /#page -->
 
 <!-- jQuery -->
 <script src="./webroot/js/jquery.min.js"></script>
-<!-- popper -->
+<!-- Popper -->
 <script src="./webroot/js/popper.min.js"></script>
-<!-- bootstrap 4.1 -->
+<!-- Bootstrap -->
 <script src="./webroot/js/bootstrap.min.js"></script>
-<!-- jQuery easing -->
+<!-- jQuery Easing -->
 <script src="./webroot/js/jquery.easing.1.3.js"></script>
 <!-- Waypoints -->
 <script src="./webroot/js/jquery.waypoints.min.js"></script>
 <!-- Flexslider -->
 <script src="./webroot/js/jquery.flexslider-min.js"></script>
-<!-- Owl carousel -->
+<!-- Owl Carousel -->
 <script src="./webroot/js/owl.carousel.min.js"></script>
 <!-- Magnific Popup -->
 <script src="./webroot/js/jquery.magnific-popup.min.js"></script>
@@ -98,9 +82,8 @@
 <script src="./webroot/js/jquery.stellar.min.js"></script>
 <!-- Main -->
 <script src="./webroot/js/main.js"></script>
-<!-- my style -->
+<!-- NHH Custom JS -->
 <script src="./webroot/js/style.js"></script>
 
 </body>
-
 </html>
